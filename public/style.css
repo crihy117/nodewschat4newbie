@@ -1,0 +1,23 @@
+#lmenu {
+    width: 220px;
+    background-color: moccasin;
+    float: left;
+}
+
+#cbody {
+    float: left;
+}
+
+table#users {
+    border-collapse: collapse;
+}
+
+table#users td {
+    border: black solid 1px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

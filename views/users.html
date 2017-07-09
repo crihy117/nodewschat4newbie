@@ -1,0 +1,21 @@
+<h1>Users</h1>
+<table id="users">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Mail</th>
+      <th>Time</th>
+    </tr>
+    <% for (var i in users) { %>
+      <tr>
+        <td>
+          <%= users[i].name %>
+        </td>
+        <td>
+          <%= users[i].email %>
+        </td>
+        <td><span id="t-<%= i %>" class="lastmsg" data-t="<%= users[i].lastMsg %>"></span></td>
+      </tr>
+      <% } %>
+  </tbody>
+</table>

@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ajax</title>
+    <!--script src="bower_components/jquery/dist/jquery.min.js"></script-->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <form>
+            <div>
+                <button id="b1" type="button">getList</button>
+                <button id="b2" type="button">getData</button>
+                <button id="b3" type="button">Time</button>
+            </div>
+        </form>
+        <div id="d1">[]</div>
+    </div>
+    <script>
+        $('#b1').click(function () {
+            $.ajax({
+                    method: "post",
+                    url: "/xhr",
+                    data: {
+                        cmd: "getList"
+                    }
+                })
+                .done(function (msg) {
+                    $('#d1').html(msg);
+                });
+        });
+        $('#b2').click(function () {
+            $.ajax({
+                    method: "post",
+                    url: "/xhr",
+                    data: {
+                        cmd: "getData"
+                    }
+                })
+                .done(function (msg) {
+                    console.log(msg);
+                });
+        });
+        $('#b3').click(function () { // exec getList
+            $('.lastmsg').each(function (i, v) {
+                var t = $(this).data('t')
+                if (t) {
+                    var diff = new Date().getTime() / 1000 - t;
+                    var ts = '';
+                    var h = Math.floor(diff / 3600);
+                    if (h > 0) {
+                        ts += h + ':';
+                    }
+                    var tmpt = diff % 3600;
+                    var m = ('0' + Math.floor(tmpt / 60)).slice(-2);
+                    ts += m + ':';
+                    var s = ('0' + Math.floor(tmpt % 60)).slice(-2);
+                    ts += s;
+                    console.log('ts: ', ts);
+                    $(this).text(ts);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
